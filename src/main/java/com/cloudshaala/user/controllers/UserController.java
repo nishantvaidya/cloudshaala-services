@@ -23,6 +23,8 @@ public class UserController {
 	 */
 	@RequestMapping(value="/authenticate",method=RequestMethod.POST)
     public  LoginResponseBean authenticate(@RequestBody LoginRequestBean loginRequestBean ) {
+		//hello user
+		//hemant here
         return null;
     }
 	
