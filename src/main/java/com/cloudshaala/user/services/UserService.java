@@ -1,7 +1,9 @@
 package com.cloudshaala.user.services;
 
-import com.cloudshaala.user.bean.LoginResponseBean;
+import org.springframework.stereotype.Service;
 
+import com.cloudshaala.user.bean.LoginResponseBean;
+@Service
 public class UserService {
 	
 	public LoginResponseBean isAuthenticated()
