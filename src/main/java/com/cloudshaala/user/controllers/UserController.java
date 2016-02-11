@@ -1,5 +1,8 @@
 package com.cloudshaala.user.controllers;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cloudshaala.user.bean.LoginRequestBean;
 import com.cloudshaala.user.bean.LoginResponseBean;
 import com.cloudshaala.user.bean.UserBean;
+import com.cloudshaala.user.bean.UserSearch;
 import com.cloudshaala.user.services.UserService;
 
 @RestController
@@ -17,7 +21,7 @@ import com.cloudshaala.user.services.UserService;
 public class UserController {
 	
 	 @Autowired	 
-	private UserService service;
+	private UserService userService;
 	/**
 	 * 
 	 * @param loginRequestBean
@@ -27,7 +31,7 @@ public class UserController {
     public  LoginResponseBean authenticate(@RequestBody LoginRequestBean loginRequestBean ) {
 		//hello user
 		//hemant here
-        return service.isAuthenticated();
+        return userService.isAuthenticated();
     }
 	
 	/**
@@ -58,5 +62,12 @@ public class UserController {
     public Object  isMobileExist (@PathVariable("mobile") String mobile ) {
         return null;
     }
-
+	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+    public UserBean  getUserDetails (@RequestBody UserSearch userSearch,HttpServletRequest request,
+			HttpServletResponse response) throws Exception  {
+        System.out.println(userSearch.getUsername() +" pass"+userSearch.getPassword());
+		return userService.getUserDetails();
+    }
+	
 }
