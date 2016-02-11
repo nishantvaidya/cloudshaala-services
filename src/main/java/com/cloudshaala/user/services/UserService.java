@@ -9,7 +9,7 @@ public class UserService {
 	public LoginResponseBean isAuthenticated()
 	{
 		LoginResponseBean lresb=new LoginResponseBean();
-		lresb.setAuthenticate(true);
+		lresb.setAuthenticate(true);  
 		return lresb;	
 	}
 
