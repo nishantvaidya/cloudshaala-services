@@ -1,5 +1,6 @@
 package com.cloudshaala.user.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,13 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cloudshaala.user.bean.LoginRequestBean;
 import com.cloudshaala.user.bean.LoginResponseBean;
 import com.cloudshaala.user.bean.UserBean;
+import com.cloudshaala.user.services.UserService;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
 	
 	 
-	
+	@Autowired	 
+	private UserService userService;
 	/**
 	 * 
 	 * @param loginRequestBean
@@ -23,7 +26,8 @@ public class UserController {
 	 */
 	@RequestMapping(value="/authenticate",method=RequestMethod.POST)
     public  LoginResponseBean authenticate(@RequestBody LoginRequestBean loginRequestBean ) {
-        return null;
+		
+        return userService.isAuthenticated();
     }
 	
 	/**
