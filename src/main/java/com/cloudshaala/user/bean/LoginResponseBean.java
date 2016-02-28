@@ -1,6 +1,9 @@
 package com.cloudshaala.user.bean;
 
-public class LoginResponseBean {
+import com.cloudshaala.beans.RESTServiceResponse;
+
+public class LoginResponseBean extends RESTServiceResponse
+{
 
 	private boolean authenticate;
 
