@@ -41,6 +41,8 @@ dependencies {
     testCompile("org.springframework.boot:spring-boot-starter-test")
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
     testCompile("junit:junit")
+    
+    compile files('./libs/cloudshaala_beans.jar')
 }
 
 task wrapper(type: Wrapper) {

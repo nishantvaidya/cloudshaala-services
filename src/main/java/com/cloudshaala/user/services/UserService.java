@@ -5,13 +5,14 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.cloudshaala.user.bean.LoginRequestBean;
 import com.cloudshaala.user.bean.LoginResponseBean;
 import com.cloudshaala.user.bean.Roles;
 import com.cloudshaala.user.bean.UserBean;
 @Service
 public class UserService {
 	
-	public LoginResponseBean isAuthenticated()
+	public LoginResponseBean isAuthenticated(LoginRequestBean loginRequestBean)
 	{
 		LoginResponseBean lresb=new LoginResponseBean();
 		lresb.setAuthenticate(true);  

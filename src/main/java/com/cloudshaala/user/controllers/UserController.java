@@ -31,7 +31,7 @@ public class UserController {
     public  LoginResponseBean authenticate(@RequestBody LoginRequestBean loginRequestBean ) {
 		//hello user
 		//hemant here
-        return userService.isAuthenticated();
+        return userService.isAuthenticated(loginRequestBean);
     }
 	
 	/**
@@ -64,9 +64,9 @@ public class UserController {
     }
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-    public UserBean  getUserDetails (@RequestBody UserSearch userSearch,HttpServletRequest request,
+    public UserBean  getUserDetails (@RequestBody LoginRequestBean loginRequestBean,HttpServletRequest request,
 			HttpServletResponse response) throws Exception  {
-        System.out.println(userSearch.getUsername() +" pass"+userSearch.getPassword());
+        System.out.println(loginRequestBean.getUsername() +" pass"+loginRequestBean.getPassword());
 		return userService.getUserDetails();
     }
 	

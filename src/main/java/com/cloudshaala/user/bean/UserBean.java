@@ -4,18 +4,18 @@ import java.util.List;
 
 public class UserBean {
 	private String userId;
-	private String type;
+	private int type;
 	private String email;
 	private String mobile;
 	private String firstName;
 	private String lastName;
 	private List<Roles> roles;
 	
-	public String getType() {
+	public int getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(int type) {
 		this.type = type;
 	}
 
