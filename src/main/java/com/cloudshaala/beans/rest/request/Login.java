@@ -1,6 +1,9 @@
-package com.cloudshaala.user.bean;
+package com.cloudshaala.beans.rest.request;
 
-public class LoginRequestBean {
+import java.io.Serializable;
+
+public class Login implements Serializable
+{
 
 	private String username;
 	

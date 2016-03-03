@@ -43,6 +43,7 @@ dependencies {
     testCompile("junit:junit")
     
     compile files('./libs/cloudshaala_beans.jar')
+    compile files('./libs/mysql-connector-java-5.1.38-bin.jar')
 }
 
 task wrapper(type: Wrapper) {
