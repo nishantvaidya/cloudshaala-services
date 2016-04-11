@@ -1,5 +1,9 @@
 package com.cloudshaala.user.controllers;
 
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +28,9 @@ public class UserController {
 	 * @return LoginResponseBean
 	 */
 	@RequestMapping(value="/authenticate",method=RequestMethod.POST)
-    public  RESTServiceResponseBean authenticate(@RequestBody LoginBean loginBean ) {
+    public  RESTServiceResponseBean authenticate(@RequestBody LoginBean loginBean) {
+		
+		
 		    return userService.isAuthenticated(loginBean);
     }
 	
@@ -46,6 +52,8 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/{emailId:.*}", method = RequestMethod.POST)
     public RESTServiceResponseBean isEmailExist (@PathVariable("emailId") String emailId ) {
+		System.out.println("controller:"+emailId);
+		
         return userService.isEmailExist(emailId);
     }
 	
