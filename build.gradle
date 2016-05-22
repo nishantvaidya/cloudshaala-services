@@ -36,10 +36,15 @@ repositories {
     mavenCentral()
 }
 
-task local <<{
-    bootRun { systemProperty "spring.profiles.active", "dev" }
+task h2dev <<{
+    bootRun { systemProperty "spring.profiles.active", "h2dev" }
 }
-local.finalizedBy bootRun
+h2dev.finalizedBy bootRun
+
+task h2dev <<{
+    bootRun { systemProperty "spring.profiles.active", "server" }
+}
+server.finalizedBy bootRun
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
