@@ -33,7 +33,7 @@ public class CourseDaoImpl {
 	}
 	
 	public List<Course> searchByTitle(String title) {
-		return repository.findByTitleLikeIgnoreCase(title);
+		return repository.findByTitleContainingOrderByTitleDesc(title);
 		
 	}
 	

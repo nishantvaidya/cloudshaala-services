@@ -9,7 +9,7 @@ import com.cloudshaala.course.bean.Course;
 
 public interface CourseRepository extends JpaRepository<Course,Long> {
 	
-	List<Course> findByTitleLikeIgnoreCase(String title);
+	List<Course> findByTitleContainingOrderByTitleDesc(String title);
 	
 	
 
