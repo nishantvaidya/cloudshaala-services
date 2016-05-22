@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: May 21, 2016 at 09:49 PM
--- Server version: 10.1.9-MariaDB
--- PHP Version: 5.6.15
+-- Host: 127.0.0.1
+-- Generation Time: May 22, 2016 at 11:10 AM
+-- Server version: 5.6.20
+-- PHP Version: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `cloudshaala`
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `attendance`
 --
 
-CREATE TABLE `attendance` (
+CREATE TABLE IF NOT EXISTS `attendance` (
   `lecture_id` varchar(20) NOT NULL,
   `student_id` varchar(20) NOT NULL,
   `status` tinyint(1) NOT NULL
@@ -38,7 +38,7 @@ CREATE TABLE `attendance` (
 -- Table structure for table `biomatric_attendance_mapping`
 --
 
-CREATE TABLE `biomatric_attendance_mapping` (
+CREATE TABLE IF NOT EXISTS `biomatric_attendance_mapping` (
   `institution_id` varchar(20) DEFAULT NULL,
   `excel_column_int` int(11) NOT NULL,
   `cloushaala_table` varchar(20) NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE `biomatric_attendance_mapping` (
 -- Table structure for table `class`
 --
 
-CREATE TABLE `class` (
+CREATE TABLE IF NOT EXISTS `class` (
   `class_id` varchar(20) NOT NULL,
   `class_title` varchar(50) NOT NULL,
   `created_on` datetime NOT NULL,
@@ -70,7 +70,7 @@ CREATE TABLE `class` (
 -- Table structure for table `class_feedback_by_student`
 --
 
-CREATE TABLE `class_feedback_by_student` (
+CREATE TABLE IF NOT EXISTS `class_feedback_by_student` (
   `class_id` int(11) DEFAULT NULL,
   `student_id` varchar(20) DEFAULT NULL,
   `feedback_text` varchar(500) NOT NULL,
@@ -84,7 +84,7 @@ CREATE TABLE `class_feedback_by_student` (
 -- Table structure for table `class_subject_teaching`
 --
 
-CREATE TABLE `class_subject_teaching` (
+CREATE TABLE IF NOT EXISTS `class_subject_teaching` (
   `teaching_id` varchar(20) NOT NULL,
   `class_id` varchar(20) NOT NULL,
   `subject_id` varchar(20) DEFAULT NULL,
@@ -101,7 +101,7 @@ CREATE TABLE `class_subject_teaching` (
 -- Table structure for table `class_teacher_history`
 --
 
-CREATE TABLE `class_teacher_history` (
+CREATE TABLE IF NOT EXISTS `class_teacher_history` (
   `class_id` int(11) NOT NULL,
   `teacher_id` varchar(20) NOT NULL,
   `start_date` datetime DEFAULT NULL,
@@ -114,8 +114,8 @@ CREATE TABLE `class_teacher_history` (
 -- Table structure for table `class_test`
 --
 
-CREATE TABLE `class_test` (
-  `test_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `class_test` (
+`test_id` int(11) NOT NULL,
   `class_subject_teaching_id` varchar(20) DEFAULT NULL,
   `title` varchar(20) NOT NULL,
   `datetime` datetime NOT NULL,
@@ -123,7 +123,7 @@ CREATE TABLE `class_test` (
   `max` int(11) NOT NULL,
   `min` int(11) NOT NULL,
   `type` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -131,7 +131,7 @@ CREATE TABLE `class_test` (
 -- Table structure for table `class_test_result`
 --
 
-CREATE TABLE `class_test_result` (
+CREATE TABLE IF NOT EXISTS `class_test_result` (
   `test_id` int(11) NOT NULL,
   `student_id` varchar(20) NOT NULL,
   `marks` float DEFAULT NULL
@@ -143,7 +143,7 @@ CREATE TABLE `class_test_result` (
 -- Table structure for table `country_state_district`
 --
 
-CREATE TABLE `country_state_district` (
+CREATE TABLE IF NOT EXISTS `country_state_district` (
   `country_code` varchar(5) NOT NULL,
   `country_name` varchar(50) NOT NULL,
   `state_code` varchar(5) NOT NULL,
@@ -169,14 +169,29 @@ INSERT INTO `country_state_district` (`country_code`, `country_name`, `state_cod
 -- Table structure for table `course`
 --
 
-CREATE TABLE `course` (
-  `course_id` varchar(20) NOT NULL,
-  `course_title` varchar(50) NOT NULL,
-  `created_on` datetime NOT NULL,
+CREATE TABLE IF NOT EXISTS `course` (
+`id` int(20) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `createdOn` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `created_by` varchar(20) DEFAULT NULL,
-  `course_for` varchar(20) DEFAULT NULL,
+  `institution` varchar(20) DEFAULT NULL,
   `syllabus` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`id`, `title`, `createdOn`, `created_by`, `institution`, `syllabus`) VALUES
+(1, 'Inter', '2016-05-22 09:52:13', '2', '1', 'Science'),
+(2, 'Inter', '2016-05-22 09:54:41', '2', '1', 'Scienceqwq'),
+(3, 'Inter', '2016-05-22 09:55:08', '2', '1', 'Science'),
+(4, 'Inter', '2016-05-22 09:56:39', '2', '1', 'Scienceqwq'),
+(5, 'Inter', '2016-05-22 10:52:54', '2', '1', 'Scienceqwq'),
+(7, '10th', '2016-05-22 11:00:09', NULL, NULL, NULL),
+(8, 'Class1', '2016-05-22 13:50:28', NULL, NULL, NULL),
+(9, 'BSC', '2016-05-22 13:50:46', NULL, NULL, NULL),
+(10, 'BCS', '2016-05-22 13:51:00', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -184,8 +199,8 @@ CREATE TABLE `course` (
 -- Table structure for table `document`
 --
 
-CREATE TABLE `document` (
-  `doc_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `document` (
+`doc_id` int(11) NOT NULL,
   `sender_id` varchar(20) DEFAULT NULL,
   `doc_type` int(11) DEFAULT NULL,
   `doc_title` varchar(50) NOT NULL,
@@ -193,7 +208,7 @@ CREATE TABLE `document` (
   `send_on` datetime DEFAULT NULL,
   `is_draft` tinyint(1) DEFAULT NULL,
   `extension` varchar(5) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -201,7 +216,7 @@ CREATE TABLE `document` (
 -- Table structure for table `document_receiver_log`
 --
 
-CREATE TABLE `document_receiver_log` (
+CREATE TABLE IF NOT EXISTS `document_receiver_log` (
   `doc_id` int(11) DEFAULT NULL,
   `receiver_id` varchar(20) DEFAULT NULL,
   `seen_datetime_time` datetime DEFAULT NULL,
@@ -214,10 +229,10 @@ CREATE TABLE `document_receiver_log` (
 -- Table structure for table `document_type`
 --
 
-CREATE TABLE `document_type` (
-  `doc_type_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `document_type` (
+`doc_type_id` int(11) NOT NULL,
   `doc_type_title` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -225,11 +240,11 @@ CREATE TABLE `document_type` (
 -- Table structure for table `entity_table`
 --
 
-CREATE TABLE `entity_table` (
-  `entity_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `entity_table` (
+`entity_id` int(11) NOT NULL,
   `entity_table` varchar(50) DEFAULT NULL,
   `entity_title` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -237,7 +252,7 @@ CREATE TABLE `entity_table` (
 -- Table structure for table `feedback_complain`
 --
 
-CREATE TABLE `feedback_complain` (
+CREATE TABLE IF NOT EXISTS `feedback_complain` (
   `complain_reg_by` varchar(20) DEFAULT NULL,
   `complain_datetime` datetime NOT NULL,
   `content_text` varchar(500) NOT NULL,
@@ -252,7 +267,7 @@ CREATE TABLE `feedback_complain` (
 -- Table structure for table `language_table`
 --
 
-CREATE TABLE `language_table` (
+CREATE TABLE IF NOT EXISTS `language_table` (
   `lang_iso_code` varchar(10) NOT NULL,
   `lang_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -271,12 +286,12 @@ INSERT INTO `language_table` (`lang_iso_code`, `lang_name`) VALUES
 -- Table structure for table `lecture`
 --
 
-CREATE TABLE `lecture` (
-  `lecture_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `lecture` (
+`lecture_id` int(11) NOT NULL,
   `class_subject_teaching_id` varchar(20) DEFAULT NULL,
   `topic` varchar(50) NOT NULL,
   `datetime_time` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -284,15 +299,15 @@ CREATE TABLE `lecture` (
 -- Table structure for table `message`
 --
 
-CREATE TABLE `message` (
-  `msg_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `message` (
+`msg_id` int(11) NOT NULL,
   `sender_id` varchar(20) DEFAULT NULL,
   `msg_type` varchar(10) NOT NULL,
   `msg_title` varchar(50) NOT NULL,
   `created_on` datetime DEFAULT NULL,
   `send_on` datetime DEFAULT NULL,
   `is_draft` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -300,7 +315,7 @@ CREATE TABLE `message` (
 -- Table structure for table `message_image`
 --
 
-CREATE TABLE `message_image` (
+CREATE TABLE IF NOT EXISTS `message_image` (
   `msg_id` int(11) DEFAULT NULL,
   `msg_path` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -311,7 +326,7 @@ CREATE TABLE `message_image` (
 -- Table structure for table `message_receiver_log`
 --
 
-CREATE TABLE `message_receiver_log` (
+CREATE TABLE IF NOT EXISTS `message_receiver_log` (
   `msg_id` int(11) NOT NULL,
   `receiver_id` varchar(20) DEFAULT NULL,
   `seen_datetime_time` datetime DEFAULT NULL,
@@ -324,7 +339,7 @@ CREATE TABLE `message_receiver_log` (
 -- Table structure for table `message_text`
 --
 
-CREATE TABLE `message_text` (
+CREATE TABLE IF NOT EXISTS `message_text` (
   `msg_id` int(11) DEFAULT NULL,
   `msg_txt` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -335,12 +350,12 @@ CREATE TABLE `message_text` (
 -- Table structure for table `page_label_data`
 --
 
-CREATE TABLE `page_label_data` (
-  `page_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `page_label_data` (
+`page_id` int(11) NOT NULL,
   `page_url` varchar(100) NOT NULL,
   `page_title` varchar(50) NOT NULL,
   `page_platform` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -348,12 +363,12 @@ CREATE TABLE `page_label_data` (
 -- Table structure for table `page_label_language_data`
 --
 
-CREATE TABLE `page_label_language_data` (
-  `label_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `page_label_language_data` (
+`label_id` int(11) NOT NULL,
   `label_title` varchar(50) NOT NULL,
   `lang_id` varchar(20) DEFAULT NULL,
   `page_id` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -361,7 +376,7 @@ CREATE TABLE `page_label_language_data` (
 -- Table structure for table `parent`
 --
 
-CREATE TABLE `parent` (
+CREATE TABLE IF NOT EXISTS `parent` (
   `parent_id` varchar(20) NOT NULL,
   `is_active` tinyint(1) NOT NULL,
   `created_by` varchar(20) DEFAULT NULL,
@@ -382,7 +397,7 @@ INSERT INTO `parent` (`parent_id`, `is_active`, `created_by`, `user_id`, `create
 -- Table structure for table `postdateed_notifications`
 --
 
-CREATE TABLE `postdateed_notifications` (
+CREATE TABLE IF NOT EXISTS `postdateed_notifications` (
   `msg_id` int(11) DEFAULT NULL,
   `post_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -393,7 +408,7 @@ CREATE TABLE `postdateed_notifications` (
 -- Table structure for table `role`
 --
 
-CREATE TABLE `role` (
+CREATE TABLE IF NOT EXISTS `role` (
   `role_id` tinyint(2) NOT NULL,
   `role_name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -415,7 +430,7 @@ INSERT INTO `role` (`role_id`, `role_name`) VALUES
 -- Table structure for table `student`
 --
 
-CREATE TABLE `student` (
+CREATE TABLE IF NOT EXISTS `student` (
   `student_id` varchar(20) NOT NULL,
   `created_on` datetime NOT NULL,
   `is_active` tinyint(1) NOT NULL,
@@ -429,7 +444,7 @@ CREATE TABLE `student` (
 -- Table structure for table `student_classes`
 --
 
-CREATE TABLE `student_classes` (
+CREATE TABLE IF NOT EXISTS `student_classes` (
   `class_id` int(11) NOT NULL,
   `student_id` varchar(20) NOT NULL,
   `join_datetime` datetime NOT NULL,
@@ -442,7 +457,7 @@ CREATE TABLE `student_classes` (
 -- Table structure for table `student_parent`
 --
 
-CREATE TABLE `student_parent` (
+CREATE TABLE IF NOT EXISTS `student_parent` (
   `student_id` varchar(20) NOT NULL,
   `parent_id` varchar(20) NOT NULL,
   `type` varchar(20) DEFAULT NULL
@@ -454,7 +469,7 @@ CREATE TABLE `student_parent` (
 -- Table structure for table `subject`
 --
 
-CREATE TABLE `subject` (
+CREATE TABLE IF NOT EXISTS `subject` (
   `subject_id` varchar(20) NOT NULL,
   `subject_title` varchar(50) NOT NULL,
   `created_on` datetime NOT NULL,
@@ -469,12 +484,12 @@ CREATE TABLE `subject` (
 -- Table structure for table `subject_teacher`
 --
 
-CREATE TABLE `subject_teacher` (
-  `subject_teacher_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `subject_teacher` (
+`subject_teacher_id` int(11) NOT NULL,
   `class_id` int(11) DEFAULT NULL,
   `teacher_id` varchar(20) DEFAULT NULL,
   `subject_id` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -482,7 +497,7 @@ CREATE TABLE `subject_teacher` (
 -- Table structure for table `teacher`
 --
 
-CREATE TABLE `teacher` (
+CREATE TABLE IF NOT EXISTS `teacher` (
   `teacher_id` varchar(20) NOT NULL,
   `is_active` tinyint(1) NOT NULL,
   `user_id` varchar(20) DEFAULT NULL,
@@ -495,7 +510,7 @@ CREATE TABLE `teacher` (
 -- Table structure for table `university_board_course`
 --
 
-CREATE TABLE `university_board_course` (
+CREATE TABLE IF NOT EXISTS `university_board_course` (
   `ubm_id` varchar(20) NOT NULL,
   `course_id` varchar(20) NOT NULL,
   `course_duration_type` varchar(10) DEFAULT NULL,
@@ -508,7 +523,7 @@ CREATE TABLE `university_board_course` (
 -- Table structure for table `university_board_master`
 --
 
-CREATE TABLE `university_board_master` (
+CREATE TABLE IF NOT EXISTS `university_board_master` (
   `ubm_id` varchar(20) NOT NULL,
   `name` varchar(100) NOT NULL,
   `country_code` varchar(5) NOT NULL,
@@ -533,7 +548,7 @@ INSERT INTO `university_board_master` (`ubm_id`, `name`, `country_code`, `state_
 -- Table structure for table `user`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE IF NOT EXISTS `user` (
   `user_id` varchar(50) NOT NULL,
   `password` varchar(12) NOT NULL,
   `firstname` varchar(30) NOT NULL,
@@ -568,6 +583,7 @@ INSERT INTO `user` (`user_id`, `password`, `firstname`, `lastname`, `gender`, `c
 ('1457578394399', '387108', 's2', 'v2', NULL, NULL, NULL, NULL, NULL, NULL, 's2@gmail.com', NULL, '12341235', NULL, NULL, NULL, 'android', NULL, NULL, NULL, NULL),
 ('1460041466348', '467151', 'hello123', '222', NULL, NULL, NULL, NULL, NULL, NULL, 'hello123@gmail.com', NULL, '888686', NULL, NULL, NULL, 'android', NULL, NULL, NULL, NULL),
 ('1460475039135', '47833', 's5', 'v5', NULL, NULL, NULL, NULL, NULL, NULL, 's3@gmail.com', NULL, '1234541235', NULL, NULL, NULL, 'android', NULL, NULL, NULL, NULL),
+('1463892029840', '20511', 'nishant', 'vaidya', NULL, NULL, NULL, NULL, NULL, NULL, 'nishant@abc.com', NULL, '99999999', NULL, NULL, NULL, 'android', NULL, NULL, NULL, NULL),
 ('cuid123456', '112233', 'aman', 'jha', 'm', NULL, NULL, NULL, NULL, NULL, 'amanajha@gmail.com', NULL, '9922331212', NULL, NULL, NULL, 'android', NULL, NULL, NULL, NULL),
 ('cuid1457490482341496935432', '82341', 'aniket', 'gupta', NULL, NULL, NULL, NULL, NULL, NULL, 'aniket@gmail.com', NULL, '99342334', NULL, NULL, NULL, 'android', NULL, NULL, NULL, NULL),
 ('cuid223344', '112233', 'mohit', 'sharma', 'm', NULL, NULL, NULL, NULL, NULL, 'mohits@gmail.com', NULL, '8899889981', NULL, NULL, NULL, 'android', NULL, NULL, NULL, NULL);
@@ -578,7 +594,7 @@ INSERT INTO `user` (`user_id`, `password`, `firstname`, `lastname`, `gender`, `c
 -- Table structure for table `user_role`
 --
 
-CREATE TABLE `user_role` (
+CREATE TABLE IF NOT EXISTS `user_role` (
   `user_id` varchar(20) NOT NULL,
   `role_id` tinyint(2) NOT NULL,
   `role_join_date` datetime DEFAULT NULL,
@@ -595,7 +611,8 @@ INSERT INTO `user_role` (`user_id`, `role_id`, `role_join_date`, `role_added_by`
 ('1457578157570', 2, '2016-03-10 08:19:12', NULL, 0),
 ('1457578394399', 2, '2016-03-10 08:23:07', NULL, 0),
 ('1460041466348', 2, '2016-04-07 20:34:27', NULL, 0),
-('1460475039135', 2, '2016-04-12 21:00:48', NULL, 0);
+('1460475039135', 2, '2016-04-12 21:00:48', NULL, 0),
+('1463892029840', 2, '2016-05-22 10:10:20', NULL, 0);
 
 --
 -- Indexes for dumped tables
@@ -605,159 +622,157 @@ INSERT INTO `user_role` (`user_id`, `role_id`, `role_join_date`, `role_added_by`
 -- Indexes for table `attendance`
 --
 ALTER TABLE `attendance`
-  ADD PRIMARY KEY (`lecture_id`,`student_id`);
+ ADD PRIMARY KEY (`lecture_id`,`student_id`);
 
 --
 -- Indexes for table `class`
 --
 ALTER TABLE `class`
-  ADD PRIMARY KEY (`class_id`);
+ ADD PRIMARY KEY (`class_id`);
 
 --
 -- Indexes for table `class_teacher_history`
 --
 ALTER TABLE `class_teacher_history`
-  ADD PRIMARY KEY (`class_id`,`teacher_id`);
+ ADD PRIMARY KEY (`class_id`,`teacher_id`);
 
 --
 -- Indexes for table `class_test`
 --
 ALTER TABLE `class_test`
-  ADD PRIMARY KEY (`test_id`);
+ ADD PRIMARY KEY (`test_id`);
 
 --
 -- Indexes for table `class_test_result`
 --
 ALTER TABLE `class_test_result`
-  ADD PRIMARY KEY (`test_id`,`student_id`);
+ ADD PRIMARY KEY (`test_id`,`student_id`);
 
 --
 -- Indexes for table `course`
 --
 ALTER TABLE `course`
-  ADD PRIMARY KEY (`course_id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `document`
 --
 ALTER TABLE `document`
-  ADD PRIMARY KEY (`doc_id`);
+ ADD PRIMARY KEY (`doc_id`);
 
 --
 -- Indexes for table `document_type`
 --
 ALTER TABLE `document_type`
-  ADD PRIMARY KEY (`doc_type_id`);
+ ADD PRIMARY KEY (`doc_type_id`);
 
 --
 -- Indexes for table `entity_table`
 --
 ALTER TABLE `entity_table`
-  ADD PRIMARY KEY (`entity_id`);
+ ADD PRIMARY KEY (`entity_id`);
 
 --
 -- Indexes for table `language_table`
 --
 ALTER TABLE `language_table`
-  ADD PRIMARY KEY (`lang_iso_code`);
+ ADD PRIMARY KEY (`lang_iso_code`);
 
 --
 -- Indexes for table `lecture`
 --
 ALTER TABLE `lecture`
-  ADD PRIMARY KEY (`lecture_id`);
+ ADD PRIMARY KEY (`lecture_id`);
 
 --
 -- Indexes for table `message`
 --
 ALTER TABLE `message`
-  ADD PRIMARY KEY (`msg_id`);
+ ADD PRIMARY KEY (`msg_id`);
 
 --
 -- Indexes for table `page_label_data`
 --
 ALTER TABLE `page_label_data`
-  ADD PRIMARY KEY (`page_id`);
+ ADD PRIMARY KEY (`page_id`);
 
 --
 -- Indexes for table `page_label_language_data`
 --
 ALTER TABLE `page_label_language_data`
-  ADD PRIMARY KEY (`label_id`);
+ ADD PRIMARY KEY (`label_id`);
 
 --
 -- Indexes for table `parent`
 --
 ALTER TABLE `parent`
-  ADD PRIMARY KEY (`parent_id`);
+ ADD PRIMARY KEY (`parent_id`);
 
 --
 -- Indexes for table `role`
 --
 ALTER TABLE `role`
-  ADD PRIMARY KEY (`role_id`);
+ ADD PRIMARY KEY (`role_id`);
 
 --
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
-  ADD PRIMARY KEY (`student_id`);
+ ADD PRIMARY KEY (`student_id`);
 
 --
 -- Indexes for table `student_classes`
 --
 ALTER TABLE `student_classes`
-  ADD PRIMARY KEY (`class_id`,`student_id`);
+ ADD PRIMARY KEY (`class_id`,`student_id`);
 
 --
 -- Indexes for table `student_parent`
 --
 ALTER TABLE `student_parent`
-  ADD PRIMARY KEY (`student_id`,`parent_id`);
+ ADD PRIMARY KEY (`student_id`,`parent_id`);
 
 --
 -- Indexes for table `subject`
 --
 ALTER TABLE `subject`
-  ADD PRIMARY KEY (`subject_id`);
+ ADD PRIMARY KEY (`subject_id`);
 
 --
 -- Indexes for table `subject_teacher`
 --
 ALTER TABLE `subject_teacher`
-  ADD PRIMARY KEY (`subject_teacher_id`);
+ ADD PRIMARY KEY (`subject_teacher_id`);
 
 --
 -- Indexes for table `teacher`
 --
 ALTER TABLE `teacher`
-  ADD PRIMARY KEY (`teacher_id`);
+ ADD PRIMARY KEY (`teacher_id`);
 
 --
 -- Indexes for table `university_board_course`
 --
 ALTER TABLE `university_board_course`
-  ADD PRIMARY KEY (`ubm_id`,`course_id`);
+ ADD PRIMARY KEY (`ubm_id`,`course_id`);
 
 --
 -- Indexes for table `university_board_master`
 --
 ALTER TABLE `university_board_master`
-  ADD PRIMARY KEY (`ubm_id`);
+ ADD PRIMARY KEY (`ubm_id`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `mobile` (`mobile`),
-  ADD UNIQUE KEY `email` (`email`);
+ ADD PRIMARY KEY (`user_id`), ADD UNIQUE KEY `mobile` (`mobile`), ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indexes for table `user_role`
 --
 ALTER TABLE `user_role`
-  ADD PRIMARY KEY (`user_id`,`role_id`);
+ ADD PRIMARY KEY (`user_id`,`role_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -767,47 +782,52 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `class_test`
 --
 ALTER TABLE `class_test`
-  MODIFY `test_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `test_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `course`
+--
+ALTER TABLE `course`
+MODIFY `id` int(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `document`
 --
 ALTER TABLE `document`
-  MODIFY `doc_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `doc_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `document_type`
 --
 ALTER TABLE `document_type`
-  MODIFY `doc_type_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `doc_type_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `entity_table`
 --
 ALTER TABLE `entity_table`
-  MODIFY `entity_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `entity_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `lecture`
 --
 ALTER TABLE `lecture`
-  MODIFY `lecture_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `lecture_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `page_label_data`
 --
 ALTER TABLE `page_label_data`
-  MODIFY `page_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `page_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `page_label_language_data`
 --
 ALTER TABLE `page_label_language_data`
-  MODIFY `label_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `label_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `subject_teacher`
 --
 ALTER TABLE `subject_teacher`
-  MODIFY `subject_teacher_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `subject_teacher_id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
