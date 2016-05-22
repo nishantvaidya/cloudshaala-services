@@ -172,7 +172,7 @@ INSERT INTO `country_state_district` (`country_code`, `country_name`, `state_cod
 CREATE TABLE IF NOT EXISTS `course` (
 `id` int(20) NOT NULL,
   `title` varchar(50) NOT NULL,
-  `createdOn` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createdOn` datetime NOT NULL,
   `created_by` varchar(20) DEFAULT NULL,
   `institution` varchar(20) DEFAULT NULL,
   `syllabus` varchar(50) DEFAULT NULL
