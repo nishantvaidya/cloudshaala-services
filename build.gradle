@@ -36,6 +36,11 @@ repositories {
     mavenCentral()
 }
 
+task local <<{
+    bootRun { systemProperty "spring.profiles.active", "dev" }
+}
+local.finalizedBy bootRun
+
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-actuator")
