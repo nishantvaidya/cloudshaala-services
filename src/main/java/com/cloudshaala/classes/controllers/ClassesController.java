@@ -47,6 +47,23 @@ public class ClassesController {
     	return service.getAll();
     	
     }
+	
+	@RequestMapping(value = "/search/course/{course}",method=RequestMethod.GET)
+	public List<Classes> searchByCourse(@PathVariable("course") String course){
+    	return service.searchByCourse( course);
+    	
+    }
+	
+	@RequestMapping(value = "/search/teacher/{teacher}",method=RequestMethod.GET)
+	public List<Classes> searchByTeacher(@PathVariable("teacher") String title){
+    	return service.searchByTeacher( title);
+    	
+    }
+	@RequestMapping(value = "/search/intitution/{id}",method=RequestMethod.GET)
+	public List<Classes> searchByIntitution(@PathVariable("id") String id){
+    	return service.searchByIntitution( id);
+    	
+    }
 
 
 }

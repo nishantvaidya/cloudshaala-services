@@ -1,19 +1,20 @@
 package com.cloudshaala.classes.bean;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import org.hibernate.annotations.Cascade;
+import javax.persistence.Table;
 
 import com.cloudshaala.course.bean.Course;
 import com.cloudshaala.teacher.bean.Teacher;
 
 @Entity
+@Table(name = "class")
 public class Classes {
 
 	@Id
@@ -21,16 +22,15 @@ public class Classes {
 	private Long id;
 	private String title;
 	private boolean active;
-	@ManyToOne(cascade = CascadeType.ALL )
-	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
-	@JoinColumn( name = "class_teacher_id" )
-	private Teacher classTeacherId;
-	@ManyToOne(cascade = CascadeType.ALL )
-	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
-	@JoinColumn( name = "course_id" )
-	private Course courseId;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn( columnDefinition ="class_teacher_id",referencedColumnName = "id" )
+	private Teacher classTeacher;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn( columnDefinition ="course_id",referencedColumnName = "id" )
+	private Course course;
 	private String section;
-	private String institutionId;
+	@Column( name = "institution_id" )
+	private String institution;
 
 	public Long getId() {
 		return id;
@@ -58,21 +58,8 @@ public class Classes {
 
 	
 
-	public Teacher getClassTeacherId() {
-		return classTeacherId;
-	}
 
-	public void setClassTeacherId(Teacher classTeacherId) {
-		this.classTeacherId = classTeacherId;
-	}
 
-	public Course getCourseId() {
-		return courseId;
-	}
-
-	public void setCourseId(Course courseId) {
-		this.courseId = courseId;
-	}
 
 	public String getSection() {
 		return section;
@@ -82,12 +69,34 @@ public class Classes {
 		this.section = section;
 	}
 
-	public String getInstitutionId() {
-		return institutionId;
+	public Teacher getClassTeacher() {
+		return classTeacher;
 	}
 
-	public void setInstitutionId(String institutionId) {
-		this.institutionId = institutionId;
+	public void setClassTeacher(Teacher classTeacher) {
+		this.classTeacher = classTeacher;
 	}
+
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+
+	public String getInstitution() {
+		return institution;
+	}
+
+	public void setInstitution(String institution) {
+		this.institution = institution;
+	}
+
+
+
+
+	
+	
 
 }

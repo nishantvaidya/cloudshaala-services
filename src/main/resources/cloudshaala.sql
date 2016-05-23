@@ -840,6 +840,14 @@ CHANGE COLUMN `is_active` `active` TINYINT(1) NOT NULL ;
 
 ALTER TABLE  `class` 
 CHANGE COLUMN `class_id` `id` VARCHAR(20) NOT NULL ;
+ALTER TABLE  `user` 
+CHANGE COLUMN `firstname` `first_name` VARCHAR(30) NOT NULL ,
+CHANGE COLUMN `lastname` `last_name` VARCHAR(30) NULL DEFAULT NULL ;
+ALTER TABLE `teacher` 
+CHANGE COLUMN `id` `id` INT(20) NOT NULL AUTO_INCREMENT ;
+ALTER TABLE `class` 
+CHANGE COLUMN `id` `id` INT(20) NOT NULL AUTO_INCREMENT ;
+
 
 
 

@@ -16,8 +16,8 @@ public class User {
 	private String lastName;
 	private String gender;
 	private String email;
-	private String mobileNo;
-	private String landlineNo;
+	private String mobile;
+	private String landline;
 	
 	public Long getUser_id() {
 		return user_id;
@@ -50,17 +50,18 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getMobileNo() {
-		return mobileNo;
+	public String getMobile() {
+		return mobile;
 	}
-	public void setMobileNo(String mobileNo) {
-		this.mobileNo = mobileNo;
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
 	}
-	public String getLandlineNo() {
-		return landlineNo;
+	public String getLandline() {
+		return landline;
 	}
-	public void setLandlineNo(String landlineNo) {
-		this.landlineNo = landlineNo;
+	public void setLandline(String landline) {
+		this.landline = landline;
 	}
+	
 
 }

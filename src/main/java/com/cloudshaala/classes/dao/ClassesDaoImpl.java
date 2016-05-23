@@ -31,15 +31,36 @@ public class ClassesDaoImpl {
 	public void delete(Long id) {
 		repository.delete(id);
 	}
-	
-	
 
 	public List<Classes> getAll() {
 		Iterable<Classes> classesItr = repository.findAll();
-		
-		List<Classes> students =
-				StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
-		return students;
+
+		List<Classes> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
+		return classes;
+	}
+
+	public List<Classes> searchByCourse(String course) {
+		Iterable<Classes> classesItr = repository.findByCourseOrderByTitleDesc(Long.parseLong(course));
+
+		List<Classes> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
+		return classes;
+
+	}
+
+	public List<Classes> searchByTeacher(String id) {
+		Iterable<Classes> classesItr = repository.findByClassTeacherOrderByTitleDesc(Long.parseLong(id));
+
+		List<Classes> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
+		return classes;
+
+	}
+
+	public List<Classes> searchByIntitution(String institution) {
+		Iterable<Classes> classesItr = repository.findByInstitutionOrderByTitleDesc(institution);
+
+		List<Classes> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
+		return classes;
+
 	}
 
 }

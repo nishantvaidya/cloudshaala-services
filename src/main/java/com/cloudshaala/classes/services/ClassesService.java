@@ -34,6 +34,20 @@ public class ClassesService {
     	
     }
     
+  public List<Classes> searchByCourse(String course){
+    	return dao.searchByCourse( course);
+    	
+    }
+	
+	public List<Classes> searchByTeacher( String title){
+    	return dao.searchByTeacher( title);
+    	
+    }
+	public List<Classes> searchByIntitution( String id){
+    	return dao.searchByIntitution( id);
+    	
+    }
+    
    
    
 }
