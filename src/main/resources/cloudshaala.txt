@@ -1,0 +1,3 @@
+cloudhshaala.com  root  hemantabc@123
+mysql root hEMANT@2016
+server ip address 122.175.171.245

@@ -1,0 +1,38 @@
+20-may-2016
+==============
+
+Use case for teacher->
+Create course, 
+course subject
+, 
+create class, 
+add students
+
+CRUD services for
+Subject 
+getSubjectsByCourse
+getClassesByCourse
+getClassByClassTeacher
+getClassesByIntitutionID
+getClassesByStudentID
+getClassBySubjectTeacherID
+
+teaching by teacher id, 
+teaching_by_subject_id, 
+by_class_id, create,
+delete
+
+student_class
+   
+student_join_class, 
+get_students_for_classID,
+delete class_student_join, 
+.
+ 
+
+//---------------------------------------------------------------------------
+
+lecture
+
+attendance
+
