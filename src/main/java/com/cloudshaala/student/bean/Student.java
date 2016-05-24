@@ -1,4 +1,4 @@
-package com.cloudshaala.user.bean;
+package com.cloudshaala.student.bean;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

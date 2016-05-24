@@ -1,10 +1,12 @@
-package com.cloudshaala.user.repository;
+package com.cloudshaala.student.repository;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.cloudshaala.user.bean.Student;
+import com.cloudshaala.student.bean.Student;
+
+
 
 
 public interface StudentRepository extends CrudRepository<Student,Long> {

@@ -2,6 +2,7 @@ endpoints:
  enabled: false
  health:
   enabled: false
+  
 
 
 spring.jpa.show-sql: true

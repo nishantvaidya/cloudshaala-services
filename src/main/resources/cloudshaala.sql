@@ -847,6 +847,29 @@ ALTER TABLE `teacher`
 CHANGE COLUMN `id` `id` INT(20) NOT NULL AUTO_INCREMENT ;
 ALTER TABLE `class` 
 CHANGE COLUMN `id` `id` INT(20) NOT NULL AUTO_INCREMENT ;
+ALTER TABLE  `subject` 
+CHANGE COLUMN `subject_id` `id` INT(20) NOT NULL AUTO_INCREMENT ,
+CHANGE COLUMN `subject_title` `title` VARCHAR(50) NOT NULL ,
+CHANGE COLUMN `created_on` `created_on` TIMESTAMP NOT NULL ;
+ALTER TABLE  `subject` 
+ADD COLUMN `active` TINYINT(1) NULL AFTER `description`;
+ALTER TABLE  `subject_teacher` 
+CHANGE COLUMN `subject_teacher_id` `subject_teacher_id` INT(20) NOT NULL ,
+CHANGE COLUMN `class_id` `class_id` INT(20) NULL DEFAULT NULL ,
+CHANGE COLUMN `teacher_id` `teacher_id` INT(20) NULL DEFAULT NULL ,
+CHANGE COLUMN `subject_id` `subject_id` INT(20) NULL ;
+ALTER TABLE `subject_teacher` 
+CHANGE COLUMN `subject_teacher_id` `subject_teacher_id` INT(20) NOT NULL;
+ALTER TABLE  `student_classes` 
+CHANGE COLUMN `class_id` `class_id` INT(20) NOT NULL ,
+CHANGE COLUMN `student_id` `student_id` INT(20) NOT NULL ,
+CHANGE COLUMN `is_active` `active` TINYINT(1) NOT NULL ,
+ADD COLUMN `id` INT(20) NULL AFTER `active`,
+ADD COLUMN `student_classescol` VARCHAR(45) NULL AFTER `id`;
+ALTER TABLE `subject_teacher` 
+CHANGE COLUMN `subject_teacher_id` `id` INT(20) NOT NULL AUTO_INCREMENT ;
+
+
 
 
 

@@ -1,6 +1,5 @@
-package com.cloudshaala.classes.bean;
+package com.cloudshaala.subject.bean;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,11 +10,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.cloudshaala.course.bean.Course;
-import com.cloudshaala.teacher.bean.Teacher;
 
 @Entity
 @Table(name = "class")
-public class Classes {
+public class Subject {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,15 +21,10 @@ public class Classes {
 	private String title;
 	private boolean active;
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn( name ="class_teacher_id",referencedColumnName = "id" )
-	private Teacher classTeacher;
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn( name ="course_id",referencedColumnName = "id" )
+	@JoinColumn(name = "course_id", referencedColumnName = "id")
 	private Course course;
-	private String section;
-	@Column( name = "institution_id" )
-	private String institution;
 	
+	private String description;
 
 	public Long getId() {
 		return id;
@@ -57,27 +50,6 @@ public class Classes {
 		this.active = active;
 	}
 
-	
-
-
-
-
-	public String getSection() {
-		return section;
-	}
-
-	public void setSection(String section) {
-		this.section = section;
-	}
-
-	public Teacher getClassTeacher() {
-		return classTeacher;
-	}
-
-	public void setClassTeacher(Teacher classTeacher) {
-		this.classTeacher = classTeacher;
-	}
-
 	public Course getCourse() {
 		return course;
 	}
@@ -86,17 +58,13 @@ public class Classes {
 		this.course = course;
 	}
 
-	public String getInstitution() {
-		return institution;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setInstitution(String institution) {
-		this.institution = institution;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-
-
-
-
 	
 	
 

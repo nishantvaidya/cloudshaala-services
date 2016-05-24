@@ -1,4 +1,4 @@
-package com.cloudshaala.user.dao;
+package com.cloudshaala.student.dao;
 
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.cloudshaala.user.bean.Student;
-import com.cloudshaala.user.repository.StudentRepository;
+import com.cloudshaala.student.bean.Student;
+import com.cloudshaala.student.repository.StudentRepository;
 
 import java.util.List;
 

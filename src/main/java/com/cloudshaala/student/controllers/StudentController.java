@@ -1,4 +1,4 @@
-package com.cloudshaala.user.controllers;
+package com.cloudshaala.student.controllers;
 
 import java.util.List;
 
@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cloudshaala.beans.rest.response.RESTServiceResponseBean;
-import com.cloudshaala.user.bean.Student;
-import com.cloudshaala.user.services.StudentService;
+import com.cloudshaala.student.bean.Student;
+import com.cloudshaala.student.services.StudentService;
 
 @RestController
 @RequestMapping("/student")
