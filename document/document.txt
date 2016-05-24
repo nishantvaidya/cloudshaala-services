@@ -14,8 +14,10 @@ getSubjectsByCourse
 getClassesByCourse
 getClassByClassTeacher
 getClassesByIntitutionID
+
 getClassesByStudentID
 getClassBySubjectTeacherID
+get_students_for_classID,
 
 teaching by teacher id, 
 teaching_by_subject_id, 
@@ -25,7 +27,7 @@ delete
 student_class
    
 student_join_class, 
-get_students_for_classID,
+
 delete class_student_join, 
 .
  
