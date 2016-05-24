@@ -10,7 +10,6 @@ import com.cloudshaala.beans.main.RoleBean;
 import com.cloudshaala.beans.main.UserBean;
 import com.cloudshaala.beans.rest.request.LoginBean;
 import com.cloudshaala.beans.rest.request.RegistrationBean;
-import com.cloudshaala.beans.rest.response.RESTServiceResponseBean;
 import com.cloudshaala.utils.Database;
 import com.cloudshaala.utils.IDGenerator;
 
@@ -20,7 +19,7 @@ public class UserDAO {
 	{
 		UserBean user=null;
 		
-		String userId=IDGenerator.getNewId("cuid"); //new user id
+		String userId=IDGenerator.getNewId("cuid"); //new us_er id
 		String password=IDGenerator.getNewId("pwd"); //new user id
 		Connection con=Database.openConnection();
 		String query="insert into user (user_id, firstname,lastname,email,mobile,password, registration_platform)"
@@ -48,6 +47,7 @@ public class UserDAO {
 				PreparedStatement pst2=con.prepareStatement(query);				
 				pst2.setString(1, userId);
 				pst2.setInt(2, registration.getRole().getroleId());
+				System.out.println("reg query1:"+query);
 				pst2.executeUpdate();
 				pst2.close();
 			
@@ -79,6 +79,7 @@ public class UserDAO {
 							+ " values(?,?,?, now() )";				
 				}					
 			}
+				System.out.println("reg query2:"+query);
 				if(query!=null)
 				{
 					PreparedStatement pst3=con.prepareStatement(query);				
