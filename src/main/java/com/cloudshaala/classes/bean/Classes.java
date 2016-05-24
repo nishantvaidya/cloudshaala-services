@@ -23,10 +23,10 @@ public class Classes {
 	private String title;
 	private boolean active;
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn( columnDefinition ="class_teacher_id",referencedColumnName = "id" )
+	@JoinColumn( name ="class_teacher_id",referencedColumnName = "id" )
 	private Teacher classTeacher;
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn( columnDefinition ="course_id",referencedColumnName = "id" )
+	@JoinColumn( name ="course_id",referencedColumnName = "id" )
 	private Course course;
 	private String section;
 	@Column( name = "institution_id" )

@@ -40,7 +40,7 @@ public class ClassesDaoImpl {
 	}
 
 	public List<Classes> searchByCourse(String course) {
-		Iterable<Classes> classesItr = repository.findByCourseOrderByTitleDesc(Long.parseLong(course));
+		Iterable<Classes> classesItr = repository.findByCourseIdOrderByTitleDesc(Long.parseLong(course));
 
 		List<Classes> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
 		return classes;
@@ -48,7 +48,7 @@ public class ClassesDaoImpl {
 	}
 
 	public List<Classes> searchByTeacher(String id) {
-		Iterable<Classes> classesItr = repository.findByClassTeacherOrderByTitleDesc(Long.parseLong(id));
+		Iterable<Classes> classesItr = repository.findByClassTeacherIdOrderByTitleDesc(Long.parseLong(id));
 
 		List<Classes> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
 		return classes;

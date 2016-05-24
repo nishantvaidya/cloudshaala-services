@@ -8,9 +8,9 @@ import com.cloudshaala.classes.bean.Classes;
 
 public interface ClassesRepository extends JpaRepository<Classes, Long> {
 
-	List<Classes> findByCourseOrderByTitleDesc(long course);
+	List<Classes> findByCourseIdOrderByTitleDesc(long course);
 
-	List<Classes> findByClassTeacherOrderByTitleDesc(long teacher);
+	List<Classes> findByClassTeacherIdOrderByTitleDesc(long teacher);
 
 	List<Classes> findByInstitutionOrderByTitleDesc(String institution);
 
