@@ -30,7 +30,7 @@ public class Student {
 		@JoinColumn( name ="user_id",referencedColumnName = "user_id" )
 	    private User details;
 	    
-	    @ManyToMany(targetEntity = Student.class)
+	    @ManyToMany(targetEntity = Classes.class)
 	    @JoinTable(name = "student_classes", joinColumns = { @JoinColumn(name = "student_id") }, 
 	                       inverseJoinColumns = { @JoinColumn(name = "class_id") })
 	    private List<Classes> classes;

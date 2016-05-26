@@ -40,5 +40,13 @@ public class StudentDaoImpl {
 				StreamSupport.stream(studentsItr.spliterator(), false).collect(Collectors.toList());
 		return students;
 	}
+	
+	public List<Student> findByClasses(Long id) {
+		Iterable<Student> studentsItr = repository.findByClassesId(id);
+		
+		List<Student> students =
+				StreamSupport.stream(studentsItr.spliterator(), false).collect(Collectors.toList());
+		return students;
+	}
 
 }

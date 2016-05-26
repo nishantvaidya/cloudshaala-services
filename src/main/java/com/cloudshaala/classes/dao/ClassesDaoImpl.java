@@ -64,7 +64,7 @@ public class ClassesDaoImpl {
 	}
 	
 	public List<Classes> searchByStudent(String student) {
-		Iterable<Classes> classesItr = repository.findByInstitutionOrderByTitleDesc(student);
+		Iterable<Classes> classesItr = repository.findByStudentsIdOrderByTitleDesc(Long.parseLong(student));
 
 		List<Classes> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
 		return classes;

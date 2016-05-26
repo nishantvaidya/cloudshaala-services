@@ -14,6 +14,6 @@ public interface ClassesRepository extends JpaRepository<Classes, Long> {
 
 	List<Classes> findByInstitutionOrderByTitleDesc(String institution);
 	
-	List<Classes> findByStudentsOrderByTitleDesc(String student);
+	List<Classes> findByStudentsIdOrderByTitleDesc(long student);
 
 }

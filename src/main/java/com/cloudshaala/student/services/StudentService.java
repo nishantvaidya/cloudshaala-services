@@ -33,4 +33,8 @@ public class StudentService {
     	return dao.getAll();
     	
     }
+    
+    public List<Student> findByClasses(Long id){
+    	return dao.findByClasses(id);
+    }
 }

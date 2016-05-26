@@ -45,6 +45,13 @@ public class StudentController {
     	return service.getAll();
     	
     }
+	
+	@RequestMapping(value = "/classes/{id}",method=RequestMethod.GET)
+	public List<Student> findByClasses(@PathVariable("id")Long id) {
+		return service.findByClasses(id);
+	}
+		
+	}
 
 
-}
+
