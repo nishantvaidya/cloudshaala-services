@@ -64,6 +64,12 @@ public class ClassesController {
     	return service.searchByIntitution( id);
     	
     }
+	
+	@RequestMapping(value = "/search/student/{id}",method=RequestMethod.GET)
+	public List<Classes> searchByStudent(@PathVariable("id") String id){
+    	return service.searchByStudent( id);
+    	
+    }
 
 
 }

@@ -868,6 +868,12 @@ ADD COLUMN `id` INT(20) NULL AFTER `active`,
 ADD COLUMN `student_classescol` VARCHAR(45) NULL AFTER `id`;
 ALTER TABLE `subject_teacher` 
 CHANGE COLUMN `subject_teacher_id` `id` INT(20) NOT NULL AUTO_INCREMENT ;
+ALTER TABLE `student` 
+CHANGE COLUMN `created_on` `created_on` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+ALTER TABLE `student` 
+CHANGE COLUMN `is_active` `active` TINYINT(1) NOT NULL ;
+ALTER TABLE `student` 
+CHANGE COLUMN `student_id` `student_id` INT(20) NOT NULL AUTO_INCREMENT ;
 
 
 

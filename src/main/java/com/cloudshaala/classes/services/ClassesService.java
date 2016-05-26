@@ -47,6 +47,11 @@ public class ClassesService {
     	return dao.searchByIntitution( id);
     	
     }
+	
+	public List<Classes> searchByStudent( String id){
+    	return dao.searchByStudent( id);
+    	
+    }
     
    
    

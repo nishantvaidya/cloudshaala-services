@@ -11,6 +11,6 @@ import com.cloudshaala.student.bean.Student;
 
 public interface StudentRepository extends CrudRepository<Student,Long> {
 	
-	List<Student> findByLastName(String lastName);
+	
 
 }

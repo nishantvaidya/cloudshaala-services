@@ -1,5 +1,7 @@
 package com.cloudshaala.classes.bean;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,10 +9,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.cloudshaala.course.bean.Course;
+import com.cloudshaala.student.bean.Student;
 import com.cloudshaala.teacher.bean.Teacher;
 
 @Entity
@@ -31,6 +36,10 @@ public class Classes {
 	private String section;
 	@Column( name = "institution_id" )
 	private String institution;
+	@ManyToMany(targetEntity = Student.class)
+    @JoinTable(name = "student_classes", joinColumns = { @JoinColumn(name = "class_id") }, 
+                       inverseJoinColumns = { @JoinColumn(name = "student_id") })
+    private List<Student> students;
 	
 
 	public Long getId() {
