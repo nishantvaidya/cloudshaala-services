@@ -874,6 +874,10 @@ ALTER TABLE `student`
 CHANGE COLUMN `is_active` `active` TINYINT(1) NOT NULL ;
 ALTER TABLE `student` 
 CHANGE COLUMN `student_id` `student_id` INT(20) NOT NULL AUTO_INCREMENT ;
+ALTER TABLE `student_classes` 
+CHANGE COLUMN `join_datetime` `join_datetime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+CHANGE COLUMN `active` `active` TINYINT(1) NOT NULL DEFAULT 1 ;
+
 
 
 

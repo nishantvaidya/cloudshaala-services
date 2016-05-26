@@ -37,4 +37,14 @@ public class StudentService {
     public List<Student> findByClasses(Long id){
     	return dao.findByClasses(id);
     }
+    
+    public void studentJoinClass(Long id, Long class_id){
+    	dao.studentJoinClass(id,class_id);
+    	
+    }
+    
+    public void studentJoinClassDelete(Long id, Long class_id){
+    	dao.studentJoinClassDelete(id,class_id);
+    	
+    }
 }
