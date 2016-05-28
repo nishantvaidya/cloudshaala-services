@@ -22,8 +22,8 @@ public class UserDAO {
 		String userId=IDGenerator.getNewId("cuid"); //new us_er id
 		String password=IDGenerator.getNewId("pwd"); //new user id
 		Connection con=Database.openConnection();
-		String query="insert into user (user_id, firstname,lastname,email,mobile,password, registration_platform)"
-				+ " values(?,?,?,?,?,?,?)";
+		String query="insert into user (id, firstname,lastname,email,mobile,password, registration_platform,primaryInstitutionType)"
+				+ " values(?,?,?,?,?,?,?,?)";
 		try{
 			PreparedStatement pst=con.prepareStatement(query);
 			pst.setString(1, userId);
@@ -33,6 +33,7 @@ public class UserDAO {
 			pst.setString(5, registration.getMobile());
 			pst.setString(6, password);
 			pst.setString(7, registration.getRegistrationPlatform() );
+			pst.setString(8, registration.getPrimaryInstitutionType());
 			
 			int rows=pst.executeUpdate();
 			pst.close();
@@ -90,7 +91,6 @@ public class UserDAO {
 					pst3.close();
 				
 				}
-				
 				
 			}
 			
