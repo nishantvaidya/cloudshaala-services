@@ -22,7 +22,7 @@ public class UserDAO {
 		String userId=IDGenerator.getNewId("cuid"); //new us_er id
 		String password=IDGenerator.getNewId("pwd"); //new user id
 		Connection con=Database.openConnection();
-		String query="insert into user (id, firstname,lastname,email,mobile,password, registration_platform,primaryInstitutionType)"
+		String query="insert into user (user_id, firstname,lastname,email,mobile,password, registration_platform,primaryInstitutionType)"
 				+ " values(?,?,?,?,?,?,?,?)";
 		try{
 			PreparedStatement pst=con.prepareStatement(query);
