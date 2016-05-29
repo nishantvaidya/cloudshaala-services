@@ -1,8 +1,6 @@
 package com.cloudshaala;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import org.h2.server.web.WebServlet;
@@ -10,8 +8,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,8 +32,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @RestController
 @Configuration
 @EnableSwagger2
-
-public class Application {
+@EnableWebSecurity
+public class Application extends WebSecurityConfigurerAdapter {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -89,5 +90,24 @@ public class Application {
 				"License of API", "API license URL");
 		return apiInfo;
 	}
+	
+	 @Override
+	    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+	        auth.inMemoryAuthentication()
+	                .withUser("cloudshaala").password("cloudshaala").roles("ADMIN")
+	                .and()
+	                .withUser("cloudshaala2").password("cloudshaala2").roles("USER");
+	    }
+	    @Override
+	    protected void configure(HttpSecurity http) throws Exception {
+	    	
+	    	 http.authorizeRequests().anyRequest().fullyAuthenticated();
+	         /*.antMatchers("/*.html").permitAll()
+	         .antMatchers("/*.js").permitAll()
+	         .antMatchers("/*.css").permitAll()*/
+	         //.antMatchers("/**").access("hasRole('USER')");
+	        http.httpBasic();
+	        http.csrf().disable();
+	    }
 
 }
