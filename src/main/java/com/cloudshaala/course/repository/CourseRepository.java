@@ -11,6 +11,8 @@ public interface CourseRepository extends JpaRepository<Course,Long> {
 	
 	List<Course> findByTitleContainingOrderByTitleDesc(String title);
 	
+	List<Course> findByInstitutionOrderByTitleDesc(Long institution);
+	
 	
 
 }

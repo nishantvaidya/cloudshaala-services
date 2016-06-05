@@ -1,3 +1,5 @@
+
+
 package com.cloudshaala.course.dao;
 
 import java.util.List;
@@ -36,6 +38,12 @@ public class CourseDaoImpl {
 		return repository.findByTitleContainingOrderByTitleDesc(title);
 		
 	}
+	
+	public List<Course> searchByInstitution(Long institution) {
+		return repository.findByInstitutionOrderByTitleDesc(institution);
+		
+	}
+	
 	
 
 	public List<Course> getAll() {

@@ -39,5 +39,10 @@ public class CourseService {
     	
     }
     
+    public List<Course>  searchByInstitution( Long institution){
+    	return dao.searchByInstitution(institution);
+    	
+    }
+    
    
 }
