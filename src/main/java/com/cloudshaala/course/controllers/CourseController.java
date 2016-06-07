@@ -45,6 +45,12 @@ public class CourseController {
     	return service.searchByTitle( title);
     	
     }
+	
+	@RequestMapping(value = "/search/institution/{institution}",method=RequestMethod.GET)
+	public List<Course> searchByInstitution(@PathVariable("institution") Long institution){
+    	return service.searchByInstitution( institution);
+    	
+    }
 
 	@RequestMapping(method=RequestMethod.GET)
 	public List<Course> getAll(){

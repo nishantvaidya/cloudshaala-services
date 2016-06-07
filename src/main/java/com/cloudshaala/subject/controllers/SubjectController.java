@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cloudshaala.classes.bean.Classes;
 import com.cloudshaala.subject.bean.Subject;
 import com.cloudshaala.subject.services.SubjectService;
 

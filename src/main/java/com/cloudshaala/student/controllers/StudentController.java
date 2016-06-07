@@ -45,6 +45,23 @@ public class StudentController {
     	return service.getAll();
     	
     }
+	
+	@RequestMapping(value = "/classes/{id}",method=RequestMethod.GET)
+	public List<Student> findByClasses(@PathVariable("id")Long id) {
+		return service.findByClasses(id);
+	}
+	
+	@RequestMapping(value = "/{id}/join/class/{class_id}",method=RequestMethod.PUT)
+	public void studentJoinClass(@PathVariable("id")Long id,@PathVariable("class_id")Long class_id) {
+		 service.studentJoinClass(id,class_id);
+	}
+	
+	@RequestMapping(value = "/{id}/join/class/{class_id}",method=RequestMethod.DELETE)
+	public void studentJoinClassDelete(@PathVariable("id")Long id,@PathVariable("class_id")Long class_id) {
+		 service.studentJoinClassDelete(id,class_id);
+	}
+		
+	}
 
 
-}
+

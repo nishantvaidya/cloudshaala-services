@@ -1,0 +1,9 @@
+115.124.124.237/24 brd 115.124.124.255 
+
+Linux command
+Check what ports are open
+netstat -plnt
+vi  /etc/sysconfig/iptables
+115.124.124.237
+/opt/tomcat9/
+cd /opt/jdk1.8.0_91/

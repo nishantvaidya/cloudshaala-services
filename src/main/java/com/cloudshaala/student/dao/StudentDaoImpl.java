@@ -40,5 +40,23 @@ public class StudentDaoImpl {
 				StreamSupport.stream(studentsItr.spliterator(), false).collect(Collectors.toList());
 		return students;
 	}
+	
+	public List<Student> findByClasses(Long id) {
+		Iterable<Student> studentsItr = repository.findByClassesId(id);
+		
+		List<Student> students =
+				StreamSupport.stream(studentsItr.spliterator(), false).collect(Collectors.toList());
+		return students;
+	}
+	
+	public void studentJoinClass(Long id, Long class_id){
+		repository.studentJoinClass(id,class_id);
+    	
+    }
+    
+    public void studentJoinClassDelete(Long id, Long class_id){
+    	repository.studentJoinClassDelete(id,class_id);
+    	
+    }
 
 }

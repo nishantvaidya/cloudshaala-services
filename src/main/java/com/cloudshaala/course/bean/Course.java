@@ -13,7 +13,7 @@ public class Course {
 	    private Long id;
 	    private String title;
 	    private String createdBy;
-	    private String institution;
+	    private Long institution;
 	    private String syllabus;
 
 	    
@@ -42,13 +42,17 @@ public class Course {
 			this.createdBy = createdBy;
 		}
 
-		public String getInstitution() {
+		
+
+		public Long getInstitution() {
 			return institution;
 		}
 
-		public void setInstitution(String institution) {
+
+		public void setInstitution(Long institution) {
 			this.institution = institution;
 		}
+
 
 		public String getSyllabus() {
 			return syllabus;
