@@ -6,6 +6,7 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.2.RELEASE")
         classpath('se.transmode.gradle:gradle-docker:1.2')
+         classpath 'org.hidetake:gradle-ssh-plugin:0.1.7'
     }
 }
 
@@ -15,6 +16,25 @@ apply plugin: 'idea'
 apply plugin: 'spring-boot'
 apply plugin: 'war'
 apply plugin: 'docker'
+apply plugin: 'ssh'
+apply plugin: 'maven'
+
+group = 'com.cloudshaala.service'
+// artifactId is taken by default, from folder name
+version = '0.1-SNAPSHOT'
+
+ssh {
+    config(StrictHostKeyChecking: 'no')
+}
+remotes {
+    testserver {
+        host = 'cloudshaala.com'
+        user = 'root'
+       // identity = file("${System.properties['user.home']}/.ssh/id_dsa")
+       password ='hemantabc@123'
+    }
+}
+
 
 project.webAppDirName = 'web'
 jar {
@@ -25,6 +45,7 @@ jar {
 war {
     baseName = 'cloudshaala-services'
     version =  '0.1.0'
+    archiveName = 'services.war'
 }
 
 configurations {
@@ -92,3 +113,28 @@ task buildDocker(type: Docker, dependsOn: jar) {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
 }
+task deployTestServer << {
+    deploy(remotes.testserver)
+}
+deployTestServer.dependsOn build
+def deploy(def server) {
+    logger.lifecycle("Deploying to $server")
+    logger.lifecycle("Copying ${war.archivePath.absolutePath} to $server ... Be patient .. takes time ...")
+    sshexec {
+        session(server) {
+            put(war.archivePath.absolutePath, war.archiveName)
+        }
+    }
+    sshexecute(server, 'service tomcat9 stop')
+    sshexecute(server, 'rm -rf /opt/tomcat9/webapps/services*')
+    sshexecute(server, "cp ${war.archiveName}  /opt/tomcat9/webapps")
+    sshexecute(server, 'service tomcat9 start')
+}
+def sshexecute(def server, def cmd) {
+    logger.lifecycle("Executing '$cmd'  ...")
+    sshexec {
+        session(server) {
+            execute(cmd, pty: true)
+        }
+    }
+    }
