@@ -125,7 +125,7 @@
          <artifactId>cloudshaala_beans</artifactId>
          <scope>system</scope>
          <version>1.0</version>
-         <systemPath>./lib/cloudshaala_beans.jar</systemPath>
+         <systemPath>../lib/cloudshaala_beans.jar</systemPath>
       </dependency>
 	</dependencies>
 	<dependencyManagement>
