@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -7,7 +8,16 @@
 	<artifactId>cloudshaala-services</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
+	<repositories>
+		<repository>
+			<id>in-project</id>
+			<name>In Project Repo</name>
+			<url>file://${project.basedir}/libs</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
+
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -121,12 +131,10 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-         <groupId>cloudshaala_beans</groupId>
-         <artifactId>cloudshaala_beans</artifactId>
-         <scope>system</scope>
-         <version>1.0</version>
-         <systemPath>../lib/cloudshaala_beans.jar</systemPath>
-      </dependency>
+			<groupId>cloudshaala_beans</groupId>
+			<artifactId>cloudshaala_beans</artifactId>
+			<version>1.0</version>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -140,8 +148,8 @@
 		</dependencies>
 	</dependencyManagement>
 	<properties>
-	    <maven.compiler.source>1.8</maven.compiler.source>
-       <maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 		<java.version>1.8</java.version>
 	</properties>
 
