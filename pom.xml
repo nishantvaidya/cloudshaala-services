@@ -135,8 +135,8 @@
 			<artifactId>cloudshaala_beans</artifactId>
 			<version>1.0</version>
 			<scope>system</scope>
-    		<systemPath>${project.basedir}/libs/cloudshaala_beans.jar</systemPath>
-    </dependency>
+			<systemPath>${project.basedir}/libs/cloudshaala_beans.jar</systemPath>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -160,6 +160,12 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
