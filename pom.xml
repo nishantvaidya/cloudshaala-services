@@ -131,10 +131,12 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>cloudshaala_beans</groupId>
-			<artifactId>cloudshaala_beans</artifactId>
-			<version>1.0</version>
-		</dependency>
+		    <groupId>cloudshaala_beans</groupId>
+		    <artifactId>cloudshaala_beans</artifactId>
+		    <version>1.0</version>
+		    <scope>system</scope>
+		    <systemPath>${project.basedir}/lib/cloudshaala_beans.jar</systemPath>
+ 		 </dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
