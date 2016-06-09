@@ -134,7 +134,9 @@
 			<groupId>cloudshaala_beans</groupId>
 			<artifactId>cloudshaala_beans</artifactId>
 			<version>1.0</version>
-		</dependency>
+			<scope>system</scope>
+    		<systemPath>${project.basedir}/libs/cloudshaala_beans.jar</systemPath>
+    </dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
