@@ -70,6 +70,12 @@ public class ClassesController {
     	return service.searchByStudent( id);
     	
     }
+	
+	@RequestMapping(value = "/search/course/{course}/intitution/{id}",method=RequestMethod.GET)
+	public List<Classes> searchByCourseAndIntitution(@PathVariable("course") String course,@PathVariable("id") String id){
+    	return service.searchByCourseAndIntitution(course, id);
+    	
+    }
 
 
 }
