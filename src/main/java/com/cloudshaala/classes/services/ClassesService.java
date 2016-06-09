@@ -52,7 +52,11 @@ public class ClassesService {
     	return dao.searchByStudent( id);
     	
     }
+	public List<Classes> searchByCourseAndIntitution(String course,String id){
+    	return dao.searchByCourseAndIntitution(course, id);
+    	
+    }
     
    
-   
+	
 }
