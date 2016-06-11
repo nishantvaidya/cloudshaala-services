@@ -11,3 +11,11 @@ spring.jpa.database-platform: org.hibernate.dialect.MySQL5Dialect
 spring.datasource.url : jdbc:mysql://cloudshaala.com:3306/cloudshaala?useSSL=false
 spring.datasource.username : cloudshaala
 spring.datasource.password : cloudshaala
+spring.datasource.max-active : 10
+spring.datasource.max-idle: 8
+spring.datasource.min-evictable-idle-time-millis: 5000
+spring.datasource.initial-size: 5
+spring.datasource.min-idle: 5
+spring.datasource.test-while-idle: true
+spring.datasource.test-on-borrow: true
+spring.datasource.validation-query: SELECT 1
