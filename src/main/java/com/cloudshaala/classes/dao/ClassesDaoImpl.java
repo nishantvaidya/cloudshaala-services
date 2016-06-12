@@ -78,6 +78,15 @@ public class ClassesDaoImpl {
 		return classes;
 
 	}
+	
+	public List<Classes> searchByTeacherAndIntitution(String teacher,String id) {
+		Iterable<Classes> classesItr = repository.findByClassTeacherIdAndInstitutionOrderByTitleDesc(Long.parseLong(teacher),id);
+
+		List<Classes> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
+		return classes;
+
+	}
+
 
 
 	

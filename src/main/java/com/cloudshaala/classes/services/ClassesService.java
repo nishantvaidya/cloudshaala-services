@@ -56,6 +56,13 @@ public class ClassesService {
     	return dao.searchByCourseAndIntitution(course, id);
     	
     }
+	
+	public List<Classes> searchByTeacherAndIntitution(String teacher,String id){
+    	return dao.searchByTeacherAndIntitution(teacher, id);
+    	
+    }
+	
+	
     
    
 	

@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.cloudshaala.course.bean.Course;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Subject {
@@ -20,6 +22,7 @@ public class Subject {
 	private boolean active;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "course_id", referencedColumnName = "id")
+	@JsonBackReference
 	private Course course;
 	
 	private String description;
