@@ -13,7 +13,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
-import com.cloudshaala.classes.bean.Classes;
+import com.cloudshaala.classes.bean.TheClass;
 import com.cloudshaala.user.bean.User;
 
 @Entity
@@ -30,10 +30,10 @@ public class Student {
 		@JoinColumn( name ="user_id",referencedColumnName = "user_id" )
 	    private User details;
 	    
-	    @ManyToMany(targetEntity = Classes.class)
+	    @ManyToMany(targetEntity = TheClass.class)
 	    @JoinTable(name = "student_classes", joinColumns = { @JoinColumn(name = "student_id") }, 
 	                       inverseJoinColumns = { @JoinColumn(name = "class_id") })
-	    private List<Classes> classes;
+	    private List<TheClass> classes;
 
 		public long getId() {
 			return id;
@@ -59,11 +59,11 @@ public class Student {
 			this.details = details;
 		}
 
-		public List<Classes> getClasses() {
+		public List<TheClass> getClasses() {
 			return classes;
 		}
 
-		public void setClasses(List<Classes> classes) {
+		public void setClasses(List<TheClass> classes) {
 			this.classes = classes;
 		}
 	    

@@ -20,7 +20,7 @@ import com.cloudshaala.teacher.bean.Teacher;
 
 @Entity
 @Table(name = "class")
-public class Classes {
+public class TheClass {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
