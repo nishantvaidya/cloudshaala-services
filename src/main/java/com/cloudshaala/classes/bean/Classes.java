@@ -26,6 +26,7 @@ public class Classes {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
+	private String acadmic_session;
 	private boolean active;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn( name ="class_teacher_id",referencedColumnName = "id" )
@@ -66,10 +67,6 @@ public class Classes {
 		this.active = active;
 	}
 
-	
-
-
-
 
 	public String getSection() {
 		return section;
@@ -101,6 +98,23 @@ public class Classes {
 
 	public void setInstitution(String institution) {
 		this.institution = institution;
+	}
+
+	
+	public String getAcadmic_session() {
+		return acadmic_session;
+	}
+
+	public void setAcadmic_session(String acadmic_session) {
+		this.acadmic_session = acadmic_session;
+	}
+
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
 	}
 
 
