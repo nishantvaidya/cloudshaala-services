@@ -1,5 +1,6 @@
 package com.cloudshaala.teacher.bean;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,7 @@ public class Teacher {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private boolean active;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn( name = "user_id" )
 	private User user;
 
