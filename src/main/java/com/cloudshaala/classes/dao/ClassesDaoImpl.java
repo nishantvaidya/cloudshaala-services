@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cloudshaala.classes.bean.TheClass;
 import com.cloudshaala.classes.repository.ClassesRepository;
+import com.cloudshaala.utils.Database;
 
 @Repository
 @Transactional
@@ -18,8 +19,11 @@ public class ClassesDaoImpl {
 	@Autowired
 	private ClassesRepository repository;
 
-	public TheClass save(TheClass classes) {
-		return repository.save(classes);
+	public TheClass save(TheClass classes) {	
+		
+		return Database.saveClass(classes);
+		//return repository.save(classes);
+		
 
 	}
 

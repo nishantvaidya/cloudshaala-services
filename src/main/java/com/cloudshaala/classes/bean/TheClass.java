@@ -36,12 +36,21 @@ public class TheClass {
 	private Course course;
 	private String section;
 	@Column( name = "institution_id" )
-	private String institution;
+	private Long institution_id;
 	@ManyToMany(targetEntity = Student.class)
     @JoinTable(name = "student_classes", joinColumns = { @JoinColumn(name = "class_id") }, 
                        inverseJoinColumns = { @JoinColumn(name = "student_id") })
     private List<Student> students;
+	private Long created_by_user_id;
+
 	
+	public Long getCreated_by_user_id() {
+		return created_by_user_id;
+	}
+
+	public void setCreated_by_user_id(Long created_by_user_id) {
+		this.created_by_user_id = created_by_user_id;
+	}
 
 	public Long getId() {
 		return id;
@@ -92,15 +101,16 @@ public class TheClass {
 		this.course = course;
 	}
 
-	public String getInstitution() {
-		return institution;
-	}
-
-	public void setInstitution(String institution) {
-		this.institution = institution;
-	}
-
 	
+	
+	public Long getInstitution_id() {
+		return institution_id;
+	}
+
+	public void setInstitution_id(Long institution_id) {
+		this.institution_id = institution_id;
+	}
+
 	public String getAcadmic_session() {
 		return acadmic_session;
 	}
