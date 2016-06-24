@@ -17,16 +17,19 @@ import javax.persistence.Table;
 import com.cloudshaala.course.bean.Course;
 import com.cloudshaala.student.bean.Student;
 import com.cloudshaala.teacher.bean.Teacher;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "class")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class TheClass {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
-	private String acadmic_session;
+	
 	private boolean active;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn( name ="class_teacher_id",referencedColumnName = "id" )
@@ -34,22 +37,33 @@ public class TheClass {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn( name ="course_id",referencedColumnName = "id" )
 	private Course course;
-	private String section;
+	private Long section;
 	@Column( name = "institution_id" )
-	private Long institution_id;
+	private Long institutionId;
 	@ManyToMany(targetEntity = Student.class)
     @JoinTable(name = "student_classes", joinColumns = { @JoinColumn(name = "class_id") }, 
                        inverseJoinColumns = { @JoinColumn(name = "student_id") })
     private List<Student> students;
-	private Long created_by_user_id;
-
+	private Long createdBy;
 	
-	public Long getCreated_by_user_id() {
-		return created_by_user_id;
+	private Long academicSession;
+	
+	public Long getAcademicSession() {
+		return academicSession;
 	}
 
-	public void setCreated_by_user_id(Long created_by_user_id) {
-		this.created_by_user_id = created_by_user_id;
+	public void setAcademicSession(Long academicSession) {
+		this.academicSession = academicSession;
+	}
+
+	
+
+	public Long getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Long createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	public Long getId() {
@@ -77,11 +91,11 @@ public class TheClass {
 	}
 
 
-	public String getSection() {
+	public Long getSection() {
 		return section;
 	}
 
-	public void setSection(String section) {
+	public void setSection(Long section) {
 		this.section = section;
 	}
 
@@ -102,23 +116,15 @@ public class TheClass {
 	}
 
 	
+	public Long getInstitutionId() {
+		return institutionId;
+	}
+
+	public void setInstitutionId(Long institutionId) {
+		this.institutionId = institutionId;
+	}
+
 	
-	public Long getInstitution_id() {
-		return institution_id;
-	}
-
-	public void setInstitution_id(Long institution_id) {
-		this.institution_id = institution_id;
-	}
-
-	public String getAcadmic_session() {
-		return acadmic_session;
-	}
-
-	public void setAcadmic_session(String acadmic_session) {
-		this.acadmic_session = acadmic_session;
-	}
-
 	public List<Student> getStudents() {
 		return students;
 	}

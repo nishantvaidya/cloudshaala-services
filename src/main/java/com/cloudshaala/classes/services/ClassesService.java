@@ -62,6 +62,11 @@ public class ClassesService {
     	
     }
 	
+	public List<TheClass> searchCourseIdAndSectionAndAcademicSessionAndInstitutionIdOrderByTitleDesc(long course,long section,long session, long institution) {
+		return dao.searchCourseIdAndSectionAndAcademicSessionAndInstitutionIdOrderByTitleDesc(course, section, session, institution);
+	}
+
+	
 	
     
    

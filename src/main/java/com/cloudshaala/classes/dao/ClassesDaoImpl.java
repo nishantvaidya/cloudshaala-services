@@ -60,7 +60,7 @@ public class ClassesDaoImpl {
 	}
 
 	public List<TheClass> searchByIntitution(String institution) {
-		Iterable<TheClass> classesItr = repository.findByInstitutionOrderByTitleDesc(institution);
+		Iterable<TheClass> classesItr = repository.findByInstitutionIdOrderByTitleDesc(Long.parseLong(institution));
 
 		List<TheClass> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
 		return classes;
@@ -76,7 +76,7 @@ public class ClassesDaoImpl {
 	}
 	
 	public List<TheClass> searchByCourseAndIntitution(String course,String id) {
-		Iterable<TheClass> classesItr = repository.findByCourseIdAndInstitutionOrderByTitleDesc(Long.parseLong(course),id);
+		Iterable<TheClass> classesItr = repository.findByCourseIdAndInstitutionIdOrderByTitleDesc(Long.parseLong(course),id);
 
 		List<TheClass> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
 		return classes;
@@ -84,13 +84,19 @@ public class ClassesDaoImpl {
 	}
 	
 	public List<TheClass> searchByTeacherAndIntitution(String teacher,String id) {
-		Iterable<TheClass> classesItr = repository.findByClassTeacherIdAndInstitutionOrderByTitleDesc(Long.parseLong(teacher),id);
+		Iterable<TheClass> classesItr = repository.findByClassTeacherIdAndInstitutionIdOrderByTitleDesc(Long.parseLong(teacher),id);
 
 		List<TheClass> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
 		return classes;
 
 	}
 
+	public List<TheClass> searchCourseIdAndSectionAndAcademicSessionAndInstitutionIdOrderByTitleDesc(long course,long section,long session, long institution) {
+		Iterable<TheClass> classesItr = repository.findByCourseIdAndSectionAndAcademicSessionAndInstitutionIdOrderByTitleDesc( course, section, session,  institution);
+		List<TheClass> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
+		return classes;
+
+	}
 
 
 	

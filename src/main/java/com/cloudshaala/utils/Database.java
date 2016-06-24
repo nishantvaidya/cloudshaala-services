@@ -37,9 +37,9 @@ public	static Long getClassId(TheClass theClass)
 			Connection con=Database.openConnection();
 						PreparedStatement pst=con.prepareStatement(query);
 			pst.setLong(1, theClass.getCourse().getId());
-			pst.setString(2, theClass.getSection());
-			pst.setString(3, theClass.getAcadmic_session());
-			pst.setLong(4, theClass.getInstitution_id());
+			pst.setLong(2, theClass.getSection());
+			pst.setLong(3, theClass.getAcademicSession());
+			pst.setLong(4, theClass.getInstitutionId());
 			
 			ResultSet rs=pst.executeQuery();
 			if(rs.next())
@@ -68,10 +68,10 @@ public	static Long getClassId(TheClass theClass)
 				PreparedStatement pst=con.prepareStatement(query);
 				pst.setString(1,theClass.getTitle());
 				pst.setLong(2, theClass.getCourse().getId());
-				pst.setLong(3, theClass.getInstitution_id());
-				pst.setString(4, theClass.getSection());
-				pst.setString(5, theClass.getAcadmic_session());
-				pst.setLong(6, theClass.getCreated_by_user_id());
+				pst.setLong(3, theClass.getInstitutionId());
+				pst.setLong(4, theClass.getSection());
+				pst.setLong(5, theClass.getAcademicSession());
+				pst.setLong(6, theClass.getCreatedBy());
 				pst.setLong(7, theClass.getClassTeacher().getId());
 				
 				int rows=pst.executeUpdate();

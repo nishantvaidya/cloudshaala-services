@@ -12,12 +12,18 @@ public interface ClassesRepository extends JpaRepository<TheClass, Long> {
 
 	List<TheClass> findByClassTeacherIdOrderByTitleDesc(long teacher);
 
-	List<TheClass> findByInstitutionOrderByTitleDesc(String institution);
+	List<TheClass> findByInstitutionIdOrderByTitleDesc(long institution);
 
 	List<TheClass> findByStudentsIdOrderByTitleDesc(long student);
 
-	List<TheClass> findByCourseIdAndInstitutionOrderByTitleDesc(long course, String institution);
+	List<TheClass> findByCourseIdAndInstitutionIdOrderByTitleDesc(long course, long institution);
 
-	List<TheClass> findByClassTeacherIdAndInstitutionOrderByTitleDesc(long teacher, String institution);
+	List<TheClass> findByClassTeacherIdAndInstitutionIdOrderByTitleDesc(long teacher, String institution);
+	
+	List<TheClass> findByCourseIdAndInstitutionIdOrderByTitleDesc(long course, String institution);
+	
+	List<TheClass> findByCourseIdAndSectionAndAcademicSessionAndInstitutionIdOrderByTitleDesc(long course,long section,long session, long institution);
+	
+	
 
 }

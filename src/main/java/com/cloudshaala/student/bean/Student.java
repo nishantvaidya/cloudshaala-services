@@ -15,8 +15,11 @@ import javax.persistence.OneToOne;
 
 import com.cloudshaala.classes.bean.TheClass;
 import com.cloudshaala.user.bean.User;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Student {
 	
 	 @Id
