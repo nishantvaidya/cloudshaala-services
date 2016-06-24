@@ -18,7 +18,7 @@ public class User {
     locLatitude,locLongitude,registeredByUser,registrationPlatform,
     communityLoginBy, communityLoginId, profilePic,secondaryLangCode,
     androidToken,primaryInstitutionType;
-;
+
 public User()
 {
 

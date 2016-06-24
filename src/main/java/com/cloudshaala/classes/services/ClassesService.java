@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cloudshaala.classes.bean.Classes;
+import com.cloudshaala.classes.bean.TheClass;
 import com.cloudshaala.classes.dao.ClassesDaoImpl;
 
 @Service
@@ -14,12 +14,12 @@ public class ClassesService {
 	@Autowired
 	private ClassesDaoImpl dao;
 	
-	public Classes save(Classes classes){
+	public TheClass save(TheClass classes){
 		return dao.save(classes);
 		
 	}
 	
-	public Classes get(Long id){
+	public TheClass get(Long id){
 		
 		return dao.get(id);
 		
@@ -29,33 +29,45 @@ public class ClassesService {
 		dao.delete(id);
 	}
 
-    public List<Classes> getAll(){
+    public List<TheClass> getAll(){
     	return dao.getAll();
     	
     }
     
-  public List<Classes> searchByCourse(String course){
+  public List<TheClass> searchByCourse(String course){
     	return dao.searchByCourse( course);
     	
     }
 	
-	public List<Classes> searchByTeacher( String title){
+	public List<TheClass> searchByTeacher( String title){
     	return dao.searchByTeacher( title);
     	
     }
-	public List<Classes> searchByIntitution( String id){
+	public List<TheClass> searchByIntitution( String id){
     	return dao.searchByIntitution( id);
     	
     }
 	
-	public List<Classes> searchByStudent( String id){
+	public List<TheClass> searchByStudent( String id){
     	return dao.searchByStudent( id);
     	
     }
-	public List<Classes> searchByCourseAndIntitution(String course,String id){
+	public List<TheClass> searchByCourseAndIntitution(String course,String id){
     	return dao.searchByCourseAndIntitution(course, id);
     	
     }
+	
+	public List<TheClass> searchByTeacherAndIntitution(String teacher,String id){
+    	return dao.searchByTeacherAndIntitution(teacher, id);
+    	
+    }
+	
+	public List<TheClass> searchCourseIdAndSectionAndAcademicSessionAndInstitutionIdOrderByTitleDesc(long course,long section,long session, long institution) {
+		return dao.searchCourseIdAndSectionAndAcademicSessionAndInstitutionIdOrderByTitleDesc(course, section, session, institution);
+	}
+
+	
+	
     
    
 	

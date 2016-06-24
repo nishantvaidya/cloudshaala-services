@@ -4,18 +4,26 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.cloudshaala.classes.bean.Classes;
+import com.cloudshaala.classes.bean.TheClass;
 
-public interface ClassesRepository extends JpaRepository<Classes, Long> {
+public interface ClassesRepository extends JpaRepository<TheClass, Long> {
 
-	List<Classes> findByCourseIdOrderByTitleDesc(long course);
+	List<TheClass> findByCourseIdOrderByTitleDesc(long course);
 
-	List<Classes> findByClassTeacherIdOrderByTitleDesc(long teacher);
+	List<TheClass> findByClassTeacherIdOrderByTitleDesc(long teacher);
 
-	List<Classes> findByInstitutionOrderByTitleDesc(String institution);
+	List<TheClass> findByInstitutionIdOrderByTitleDesc(long institution);
+
+	List<TheClass> findByStudentsIdOrderByTitleDesc(long student);
+
+	List<TheClass> findByCourseIdAndInstitutionIdOrderByTitleDesc(long course, long institution);
+
+	List<TheClass> findByClassTeacherIdAndInstitutionIdOrderByTitleDesc(long teacher, String institution);
 	
-	List<Classes> findByStudentsIdOrderByTitleDesc(long student);
+	List<TheClass> findByCourseIdAndInstitutionIdOrderByTitleDesc(long course, String institution);
 	
-	List<Classes> findByCourseIdAndInstitutionOrderByTitleDesc(long course,String institution);
+	List<TheClass> findByCourseIdAndSectionAndAcademicSessionAndInstitutionIdOrderByTitleDesc(long course,long section,long session, long institution);
+	
+	
 
 }

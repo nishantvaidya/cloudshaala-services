@@ -1,9 +1,18 @@
 package com.cloudshaala.course.bean;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+import com.cloudshaala.subject.bean.Subject;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Course {
@@ -15,8 +24,22 @@ public class Course {
 	    private String createdBy;
 	    private Long institution;
 	    private String syllabus;
+	    @OneToMany(fetch=FetchType.EAGER)
+	    @JoinColumn(name="course_id")
+	    @JsonManagedReference
+	    private List<Subject> subjects;
 
 	    
+		public List<Subject> getSubjects() {
+			return subjects;
+		}
+
+
+		public void setSubjects(List<Subject> subjects) {
+			this.subjects = subjects;
+		}
+
+
 		public Long getId() {
 			return id;
 		}

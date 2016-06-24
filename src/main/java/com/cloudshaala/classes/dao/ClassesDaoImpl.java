@@ -8,8 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.cloudshaala.classes.bean.Classes;
+import com.cloudshaala.classes.bean.TheClass;
 import com.cloudshaala.classes.repository.ClassesRepository;
+import com.cloudshaala.utils.Database;
 
 @Repository
 @Transactional
@@ -18,12 +19,15 @@ public class ClassesDaoImpl {
 	@Autowired
 	private ClassesRepository repository;
 
-	public Classes save(Classes classes) {
-		return repository.save(classes);
+	public TheClass save(TheClass classes) {	
+		
+		return Database.saveClass(classes);
+		//return repository.save(classes);
+		
 
 	}
 
-	public Classes get(Long id) {
+	public TheClass get(Long id) {
 		return repository.findOne(id);
 
 	}
@@ -32,49 +36,64 @@ public class ClassesDaoImpl {
 		repository.delete(id);
 	}
 
-	public List<Classes> getAll() {
-		Iterable<Classes> classesItr = repository.findAll();
+	public List<TheClass> getAll() {
+		Iterable<TheClass> classesItr = repository.findAll();
 
-		List<Classes> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
+		List<TheClass> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
 		return classes;
 	}
 
-	public List<Classes> searchByCourse(String course) {
-		Iterable<Classes> classesItr = repository.findByCourseIdOrderByTitleDesc(Long.parseLong(course));
+	public List<TheClass> searchByCourse(String course) {
+		Iterable<TheClass> classesItr = repository.findByCourseIdOrderByTitleDesc(Long.parseLong(course));
 
-		List<Classes> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
-		return classes;
-
-	}
-
-	public List<Classes> searchByTeacher(String id) {
-		Iterable<Classes> classesItr = repository.findByClassTeacherIdOrderByTitleDesc(Long.parseLong(id));
-
-		List<Classes> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
+		List<TheClass> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
 		return classes;
 
 	}
 
-	public List<Classes> searchByIntitution(String institution) {
-		Iterable<Classes> classesItr = repository.findByInstitutionOrderByTitleDesc(institution);
+	public List<TheClass> searchByTeacher(String id) {
+		Iterable<TheClass> classesItr = repository.findByClassTeacherIdOrderByTitleDesc(Long.parseLong(id));
 
-		List<Classes> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
+		List<TheClass> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
 		return classes;
 
 	}
-	
-	public List<Classes> searchByStudent(String student) {
-		Iterable<Classes> classesItr = repository.findByStudentsIdOrderByTitleDesc(Long.parseLong(student));
 
-		List<Classes> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
+	public List<TheClass> searchByIntitution(String institution) {
+		Iterable<TheClass> classesItr = repository.findByInstitutionIdOrderByTitleDesc(Long.parseLong(institution));
+
+		List<TheClass> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
 		return classes;
 
 	}
 	
-	public List<Classes> searchByCourseAndIntitution(String course,String id) {
-		Iterable<Classes> classesItr = repository.findByCourseIdAndInstitutionOrderByTitleDesc(Long.parseLong(course),id);
+	public List<TheClass> searchByStudent(String student) {
+		Iterable<TheClass> classesItr = repository.findByStudentsIdOrderByTitleDesc(Long.parseLong(student));
 
-		List<Classes> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
+		List<TheClass> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
+		return classes;
+
+	}
+	
+	public List<TheClass> searchByCourseAndIntitution(String course,String id) {
+		Iterable<TheClass> classesItr = repository.findByCourseIdAndInstitutionIdOrderByTitleDesc(Long.parseLong(course),id);
+
+		List<TheClass> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
+		return classes;
+
+	}
+	
+	public List<TheClass> searchByTeacherAndIntitution(String teacher,String id) {
+		Iterable<TheClass> classesItr = repository.findByClassTeacherIdAndInstitutionIdOrderByTitleDesc(Long.parseLong(teacher),id);
+
+		List<TheClass> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
+		return classes;
+
+	}
+
+	public List<TheClass> searchCourseIdAndSectionAndAcademicSessionAndInstitutionIdOrderByTitleDesc(long course,long section,long session, long institution) {
+		Iterable<TheClass> classesItr = repository.findByCourseIdAndSectionAndAcademicSessionAndInstitutionIdOrderByTitleDesc( course, section, session,  institution);
+		List<TheClass> classes = StreamSupport.stream(classesItr.spliterator(), false).collect(Collectors.toList());
 		return classes;
 
 	}

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.cloudshaala.classes.bean.Classes;
+import com.cloudshaala.classes.bean.TheClass;
 import com.cloudshaala.subject.bean.Subject;
 import com.cloudshaala.subject.repository.SubjectRepository;
 
